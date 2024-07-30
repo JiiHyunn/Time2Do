@@ -109,7 +109,7 @@ const Main = () => {
       window.Kakao.init('c0ff6382916f06efdc1b686fc70d74af');
     }
     window.Kakao.Auth.authorize({
-      redirectUri: 'http://localhost:8080/kakao/callback',
+      redirectUri: 'http://localhost:3000/kakao/callback',
     });
   };
 
