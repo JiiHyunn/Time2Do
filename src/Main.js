@@ -88,7 +88,7 @@ const Main = () => {
 
   const fetchUserInfo = (code) => {
     fetch('http://localhost:8080/kakao/callback', {
-      method: 'GET',
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
@@ -103,6 +103,8 @@ const Main = () => {
         console.error('Error:', error);
       });
   };
+  
+  
 
   const handleLogin = () => {
     if (!window.Kakao.isInitialized()) {
