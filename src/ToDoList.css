@@ -1,0 +1,125 @@
+.todolist {
+  position: absolute;
+  top: 186px;
+  left: 1223px;
+  width: 180px;
+  height: auto;
+  font-size: 10px;
+  font-family: 'KoPubBatang', sans-serif;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+}
+
+.goal-title {
+  font-family: 'Nico Moji', sans-serif;
+  font-size: 20px;
+  width: 50px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.todolist .task-list {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 16px;
+}
+
+.todolist .task-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.todolist .task-item.completed span {
+  text-decoration: line-through;
+  color: #ccc;
+}
+
+.todolist .task-item input[type="checkbox"] {
+  margin-right: 8px;
+}
+
+.todolist .task-item button {
+  margin-left: 8px;
+  background: none;
+  border: none;
+  color: #c00;
+  cursor: pointer;
+}
+
+.todolist .task-input {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.todolist .task-input input[type="text"] {
+  width: calc(100% - 12px);
+  padding: 4px;
+  margin-right: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.todolist .add-button {
+  width: 100%;
+  padding: 8px;
+  background: none;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.todolist .add-button img {
+  width: 100%;
+  height: auto;
+}
+.todolist .task-item button {
+  margin-left: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0; /* 추가 */
+}
+
+.todolist .task-item button img {
+  width: 16px; /* 이미지 크기 조정 */
+  height: 16px; /* 이미지 크기 조정 */
+}
+.todolist .task-item button {
+  margin-left: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.todolist .task-item button img {
+  width: 16px;
+  height: 16px;
+}
+
+.todolist .drag-handle {
+  cursor: move;
+  margin-left: 30px;
+}
+
+.todolist .task-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+  border: 1px solid transparent;
+}
+
+.todolist .task-item.dragging {
+  opacity: 0.5;
+  border: 1px dashed #ccc;
+}
+
+
