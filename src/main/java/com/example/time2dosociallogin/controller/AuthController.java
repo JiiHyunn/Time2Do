@@ -25,21 +25,7 @@ public class AuthController {
     @Value("${kakao.client.id}")
     private String clientId;
 
-
-//   @GetMapping("/kakao/callback")
-//    public ResponseEntity<?> getKaKaoAuthorizeCode(@RequestParam(required = false, value = "code") String authorizeCode) {
-//        log.info("[kakao-login] authorizeCode : {}", authorizeCode);
-//
-//       ResponseDto responseDto = authService.getKaKaoUserInfo(authorizeCode);
-//       return ResponseEntity.ok(responseDto);
-//
-//        RestTemplate restTemplate = new RestTemplate();
-//        HttpHeaders headers = new HttpHeaders();
-//        headers.set("Authorization", "Bearer {토큰값}");
-//
-//        return authService.getKaKaoUserInfo(authorizeCode);
-//    }
-
+    @CrossOrigin(origins = "http://localhost:3000",allowCredentials = "true")
     @GetMapping("/kakao/callback")
 
     public ResponseEntity<?> getKaKaoAuthorizeCode(@RequestParam("code") String authorizeCode) {
