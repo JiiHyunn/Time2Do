@@ -23,6 +23,7 @@ const Main = () => {
   const [volume, setVolume] = useState(100);
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const [img2Visible, setImg2Visible] = useState(false); 
+  const [showToDoList, setShowToDoList] = useState(false); // ToDoList 표시 상태 추가
   const [user, setUser] = useState(null); 
   const [timerKey, setTimerKey] = useState(Date.now()); // 타이머 리셋을 위한 키
   const [timerTime, setTimerTime] = useState(1500); // 타이머 초기값
@@ -36,7 +37,7 @@ const Main = () => {
     return () => clearInterval(timer);
   }, []);
 
- useEffect(() => {
+  useEffect(() => {
     const code = new URL(window.location.href).searchParams.get('code');
     console.log('Code:', code); // code 값 로그로 확인
     if (code) {
@@ -86,21 +87,33 @@ const Main = () => {
     setImg2Visible(!img2Visible);
   };
 
+  const toggleToDoList = () => {
+    setShowToDoList(!showToDoList); // ToDoList 표시 여부 토글
+  };
+
   const fetchUserInfo = (code) => {
-    fetch('http://localhost:8080/kakao/callback', {
-      method: 'POST',
+    const url = new URL('http://localhost:8080/kakao/callback');
+    url.searchParams.append('code', code);
+  
+    console.log('Sending request to:', url.toString()); // 요청 URL 로그
+  
+    fetch(url, {
+      method: 'GET',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ code: code }),
     })
-      .then((res) => res.json())
+      .then((res) => {
+        console.log('Response received:', res); // 응답 로그
+        return res.json();
+      })
       .then((data) => {
+        console.log('Data received:', data); // 데이터 로그
         setUser(data.user.kakao_account.profile);
         localStorage.setItem('kakaoToken', data.access_token);
       })
       .catch((error) => {
-        console.error('Error:', error);
+        console.error('Error:', error); // 에러 로그
       });
   };
   
@@ -140,13 +153,12 @@ const Main = () => {
       <div className={`dropdown-menu ${dropdownVisible ? 'show' : ''}`} onClick={toggleDropdown}>
         <img src={img1} alt="img1" />
         <img src={img2} alt="img2" onClick={toggleImg2} />
-        <img src={img3} alt="img3" />
+        <img src={img3} alt="img3" onClick={toggleToDoList} /> {/* img3 클릭 시 ToDoList 토글 */}
         <img src={img4} alt="img4" />
         <img src={img5} alt="img5" />
-        <img src={img6} alt="img6" />
         <img src={img7} alt="img7" onClick={() => document.documentElement.requestFullscreen()} />
       </div>
-      <ToDoList />
+      {showToDoList && <ToDoList />} {/* ToDoList 표시 */}
       <div className="div3">
         <div className="friday">{formatDate(currentTime)}</div>
         <div className="div4">
