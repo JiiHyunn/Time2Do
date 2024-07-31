@@ -6,6 +6,7 @@ import com.example.time2dosociallogin.jwt.JwtTokenProvider;
 import com.example.time2dosociallogin.repository.UserRepository;
 import com.example.time2dosociallogin.service.AuthService;
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -27,8 +28,8 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class AuthServiceImpl implements AuthService {
     private final UserRepository userRepository;
-
     private final JwtTokenProvider jwtTokenProvider;
+    private final ObjectMapper objectMapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
     @Value("${kakao.client.id}")
     private String clientKey;
@@ -42,7 +43,7 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     @Transactional
-    public ResponseEntity<?> getKaKaoUserInfo(String code) {
+    public ResponseDto getKaKaoUserInfo(String code) {
         log.info("[kakao login] issue a authorizecode");
 
         ObjectMapper objectMapper = new ObjectMapper(); // json 파싱해주는 객체
@@ -76,7 +77,9 @@ public class AuthServiceImpl implements AuthService {
             });
             String accessToken = (String) responseMap.get("access_token");
 
-            return ResponseEntity.ok(getInfo(accessToken));
+            // 액세스 토큰 로그 출력
+            log.info("[kakao-login] accessToken : {}", accessToken);
+            return getInfo(accessToken);
 
 //            objectMapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 //            KakaoTokenDto kakaoTokenDto = null;
@@ -89,10 +92,11 @@ public class AuthServiceImpl implements AuthService {
 
         } catch (Exception e) {
             log.error("Error during Kakao login process", e);
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+//            return new ResponseEntity<>(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
 //            e.printStackTrace();
 //            return null;
         }
+        return null;
     }
 
 
@@ -158,7 +162,6 @@ public class AuthServiceImpl implements AuthService {
 //            e.printStackTrace();
 //            return null;
         }
-
-
     }
+
 }

@@ -46,10 +46,10 @@ public class SignController {
         }
         return signInResultDto;
     }
-    @GetMapping(value = "/exception")
-    public void exceptionTest()throws  RuntimeException{
-        throw new RuntimeException("접근이 금지 되었습니다.");
-    }
+//    @GetMapping(value = "/exception")
+//    public void exceptionTest()throws  RuntimeException{
+//        throw new RuntimeException("접근이 금지 되었습니다.");
+//    }
 
     @ExceptionHandler(value = RuntimeException.class)
     public ResponseEntity<Map<String, String>> ExceptionHandler(RuntimeException e) {
