@@ -4,17 +4,18 @@ import { useEffect, useState, useRef } from 'react';
 import Modal from './Modal';
 import ToDoList from './ToDoList';
 import Timer from './Timer';
+import FrameInstance from './FrameInstance'; // FrameInstance 추가
 import img1 from './img/img1.png'; 
 import img2 from './img/img2.png';
 import img3 from './img/img3.png';
 import img4 from './img/img4.png';
 import img5 from './img/img5.png';
-import img6 from './img/img6.png';
 import img7 from './img/img7.png';
 import TimerSetting from './img/TimerSetting.png';
 import Timerbutton from './img/Timerbutton.png';
 import Timerbutton2 from './img/Timerbutton2.png';
 import Timerbutton3 from './img/Timerbutton3.png';
+import rainSound from './music/내가 들으려고 만든 잠드는 빗소리 1시간버전 1분후 검은화면.mp3';
 
 const Main = () => {
   const [currentTime, setCurrentTime] = useState(new Date());
@@ -24,27 +25,23 @@ const Main = () => {
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const [img2Visible, setImg2Visible] = useState(false); 
   const [showToDoList, setShowToDoList] = useState(false); // ToDoList 표시 상태 추가
+  const [showMemo, setShowMemo] = useState(false); // Memo 표시 상태 추가
   const [user, setUser] = useState(null); 
   const [timerKey, setTimerKey] = useState(Date.now()); // 타이머 리셋을 위한 키
   const [timerTime, setTimerTime] = useState(1500); // 타이머 초기값
   const audioRef = useRef(null);
+  const rainAudioRef = useRef(null); // 빗소리 오디오 참조
 
   useEffect(() => {
+    // 페이지가 로드될 때 90% 줌으로 설정
+    document.body.style.zoom = '90%';
+
     const timer = setInterval(() => {
       setCurrentTime(new Date());
     }, 1000);
 
     return () => clearInterval(timer);
   }, []);
-
-  useEffect(() => {
-    const code = new URL(window.location.href).searchParams.get('code');
-    console.log('Code:', code); // code 값 로그로 확인
-    if (code) {
-      fetchUserInfo(code);
-    }
-  }, []);
-
 
   const formatTime = (date) => {
     let hours = date.getHours();
@@ -77,6 +74,9 @@ const Main = () => {
     if (audioRef.current) {
       audioRef.current.volume = event.target.value / 100;
     }
+    if (rainAudioRef.current) {
+      rainAudioRef.current.volume = event.target.value / 100;
+    }
   };
 
   const toggleDropdown = () => {
@@ -91,41 +91,16 @@ const Main = () => {
     setShowToDoList(!showToDoList); // ToDoList 표시 여부 토글
   };
 
-  const fetchUserInfo = (code) => {
-    const url = new URL('http://localhost:8080/kakao/callback');
-    url.searchParams.append('code', code);
-  
-    console.log('Sending request to:', url.toString()); // 요청 URL 로그
-  
-    fetch(url, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-      .then((res) => {
-        console.log('Response received:', res); // 응답 로그
-        return res.json();
-      })
-      .then((data) => {
-        console.log('Data received:', data); // 데이터 로그
-        setUser(data.user.kakao_account.profile);
-        localStorage.setItem('kakaoToken', data.access_token);
-      })
-      .catch((error) => {
-        console.error('Error:', error); // 에러 로그
-      });
+  const toggleMemo = () => {
+    setShowMemo(!showMemo); // Memo 표시 여부 토글
   };
-  
-  
 
-  const handleLogin = () => {
-    if (!window.Kakao.isInitialized()) {
-      window.Kakao.init('c0ff6382916f06efdc1b686fc70d74af');
+  const toggleRainSound = () => {
+    if (rainAudioRef.current.paused) {
+      rainAudioRef.current.play();
+    } else {
+      rainAudioRef.current.pause();
     }
-    window.Kakao.Auth.authorize({
-      redirectUri: 'http://localhost:3000/kakao/callback',
-    });
   };
 
   const handleTimerReset = (time) => {
@@ -154,11 +129,16 @@ const Main = () => {
         <img src={img1} alt="img1" />
         <img src={img2} alt="img2" onClick={toggleImg2} />
         <img src={img3} alt="img3" onClick={toggleToDoList} /> {/* img3 클릭 시 ToDoList 토글 */}
-        <img src={img4} alt="img4" />
-        <img src={img5} alt="img5" />
+        <img src={img4} alt="img4" onClick={toggleMemo} /> {/* img4 클릭 시 Memo 토글 */}
+        <img src={img5} alt="img5" onClick={toggleRainSound} /> {/* img5 클릭 시 빗소리 토글 */}
         <img src={img7} alt="img7" onClick={() => document.documentElement.requestFullscreen()} />
       </div>
       {showToDoList && <ToDoList />} {/* ToDoList 표시 */}
+      {showMemo && (
+        <div className={showToDoList ? 'memo-container' : 'memo-container-below-div3'}>
+          <FrameInstance />
+        </div>
+      )} {/* Memo 표시 */}
       <div className="div3">
         <div className="friday">{formatDate(currentTime)}</div>
         <div className="div4">
@@ -205,9 +185,8 @@ const Main = () => {
         />
       </div>
       <audio ref={audioRef} src="your-audio-file.mp3" autoPlay loop />
+      <audio ref={rainAudioRef} src={rainSound} loop /> {/* 빗소리 오디오 */}
       <Modal show={showModal} onClose={toggleModal} onLoginSuccess={setUser} />
-      {user && <div className="user-info">{user.nickname}님 환영합니다!</div>}
-      <button onClick={handleLogin}>Kakao Login</button>
     </div>
   );
 };

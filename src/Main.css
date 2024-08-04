@@ -636,6 +636,39 @@
   width: 133px; /* 필요에 따라 크기 조정 */
   height: 64px; /* 필요에 따라 크기 조정 */
 }
+.memo-image {
+  position: absolute;
+  top: calc(186px + 177px + 15px); /* ToDoList 위치 + 높이 + 40px */
+  left: 1242px;
+  width: 180px;
+}
+
+.memo-image-below-div3 {
+  position: absolute;
+  top: calc(35px + 45px + 100px); /* div3 위치 + 높이 + 40px */
+  left: 1242px;
+  width: 180px;
+}
+.memo-container {
+  position: absolute;
+  top: calc(186px + 177px + 15px); /* ToDoList 위치 + 높이 + 40px */
+  left: 1242px;
+  width: 180px;
+}
+
+.memo-container-below-div3 {
+  position: absolute;
+  top: calc(35px + 45px + 100px); /* div3 위치 + 높이 + 40px */
+  left: 1242px;
+  width: 180px;
+}
+
+
+
+
+
+
+
 
 
 
