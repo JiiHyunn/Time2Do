@@ -9,8 +9,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
 
 import java.util.Map;
 
@@ -32,12 +32,9 @@ public class AuthController {
 
         log.info("[kakao-login] authorizeCode : {}", authorizeCode);
 
-        if (authorizeCode == null) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Authorization code is missing");
-        }
 
         try {
-            ResponseDto responseDto = authService.getKaKaoUserInfo(authorizeCode);
+            ResponseEntity<?> responseDto = authService.getKaKaoUserInfo(authorizeCode);
             return ResponseEntity.ok(responseDto);
         } catch (Exception e) {
             log.error("Error during Kakao login process", e);
@@ -45,5 +42,11 @@ public class AuthController {
         }
     }
 
+    @ExceptionHandler(MissingServletRequestParameterException.class)
+    public ResponseEntity<String> handleMissingParams(MissingServletRequestParameterException ex) {
+        String name = ex.getParameterName();
+        log.error("Missing request parameter: {}", name);
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Required request parameter '" + name + "' is missing");
+    }
 
 }

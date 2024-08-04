@@ -1,8 +1,8 @@
 package com.example.time2dosociallogin.service;
 
-import com.example.time2dosociallogin.dto.ResponseDto;
+import org.springframework.http.ResponseEntity;
 
 public interface AuthService {
-    ResponseDto getKaKaoUserInfo(String authorizeCode);
+    ResponseEntity<?> getKaKaoUserInfo(String authorizeCode);
 
 }
