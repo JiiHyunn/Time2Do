@@ -1,0 +1,22 @@
+logging:
+  level:
+    org.hibernate.orm.jdbc.bind: TRACE
+
+spring:
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        use_sql_comments: true
+        highlight_sql: true
+
+    hibernate:
+      ddl-auto: create
+
+oauth:
+  kakao:
+    client_id: dcd3ebb2733d21881a04e38a07603869
+    redirect_uri: http://localhost:3000/oauth/redirected/kakao
+    client_secret: sCDsfC8HALLeSdSIzHcimQyEJO2ZDGay
+    scope: profile_nickname, profile_image
