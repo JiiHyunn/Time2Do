@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import './Modal.css';
 import loginImage from './img/loginImage.png';
 
-const Modal = ({ show, onClose, onLoginSuccess }) => {
+const Modal = ({ show, onClose, onLoginSuccess, user, onLogout }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [email, setEmail] = useState(''); // 이메일 상태 추가
-  const [adConsent, setAdConsent] = useState(false); // 광고 수신 동의 상태 추가
-  const [isSignUp, setIsSignUp] = useState(false); // 회원가입 모드인지 여부
+  const [email, setEmail] = useState('');
+  const [adConsent, setAdConsent] = useState(false);
+  const [signup, setSignup] = useState(false);
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -17,16 +17,11 @@ const Modal = ({ show, onClose, onLoginSuccess }) => {
     onClose(); 
   };
 
-  const handleSignUp = (e) => {
+  const handleSignup = (e) => {
     e.preventDefault();
-    // 회원가입 로직 구현
-    console.log('Sign Up - Username:', username);
-    console.log('Sign Up - Password:', password);
-    console.log('Sign Up - Email:', email);
-    console.log('Sign Up - Ad Consent:', adConsent);
-    // 회원가입 성공 시 로그인과 동일하게 처리
-    onLoginSuccess({ nickname: username });
-    onClose();
+    console.log('Sign up:', { username, password, email, adConsent });
+    // 회원가입 로직 추가
+    setSignup(false); // 회원가입 완료 후 로그인 화면으로 이동
   };
 
   const handleImageClick = () => {
@@ -43,74 +38,86 @@ const Modal = ({ show, onClose, onLoginSuccess }) => {
         <span className="close" onClick={onClose}>
           &times;
         </span>
-        {isSignUp ? (
-          <div>
-            <h2>Sign Up</h2>
-            <form onSubmit={handleSignUp}>
-              <label>
-                ID:
-                <input
-                  type="text"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                />
-              </label>
-              <button type="button">Check ID</button> {/* 아이디 중복 확인 버튼 */}
-              <label>
-                Password:
-                <input
-                  type="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-              </label>
-              <label>
-                Email:
-                <input
-                  type="email"
-                  value={email} // 이메일 값 설정
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-              </label>
-              <label>
-                <input
-                  type="checkbox"
-                  checked={adConsent} // 광고 수신 동의 값 설정
-                  onChange={(e) => setAdConsent(e.target.checked)}
-                />
-                I agree to receive advertisements
-              </label>
-              <button type="submit">Sign Up</button>
-            </form>
-            <button onClick={() => setIsSignUp(false)}>Already have an account? Log In</button>
-          </div>
+        {user ? (
+          <>
+            <h2>로그아웃</h2>
+            <p>{user.nickname}님, 로그아웃 하시겠습니까?</p>
+            <button onClick={onLogout}>로그아웃</button>
+          </>
         ) : (
-          <div>
-            <h2>Login</h2>
-            <form onSubmit={handleLogin}>
-              <label>
-                Username:
-                <input
-                  type="text"
-                  name="username"
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                />
-              </label>
-              <label>
-                Password:
-                <input
-                  type="password"
-                  name="password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-              </label>
-              <button type="submit">Login</button>
-            </form>
+          <>
+            <h2>{signup ? 'Sign Up' : 'Login'}</h2>
+            {signup ? (
+              <form onSubmit={handleSignup}>
+                <label>
+                  아이디:
+                  <input
+                    type="text"
+                    name="username"
+                    placeholder="아이디를 입력하세요."
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                  />
+                </label>
+                <label>
+                  비밀번호:
+                  <input
+                    type="password"
+                    name="password"
+                    placeholder="비밀번호를 입력하세요."
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                </label>
+                <label>
+                  이메일:
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="이메일을 입력하세요."
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                </label>
+                <label>
+                  광고 수신 동의:
+                  <input
+                    type="checkbox"
+                    checked={adConsent}
+                    onChange={(e) => setAdConsent(e.target.checked)}
+                  />
+                </label>
+                <button type="submit">회원가입</button>
+                <button type="button" onClick={() => setSignup(false)}>로그인 화면으로</button>
+              </form>
+            ) : (
+              <form onSubmit={handleLogin}>
+                <label>
+                  아이디:
+                  <input
+                    type="text"
+                    name="username"
+                    placeholder="아이디를 입력하세요."
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                  />
+                </label>
+                <label>
+                  비밀번호:
+                  <input
+                    type="password"
+                    name="password"
+                    placeholder="비밀번호를 입력하세요."
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
+                </label>
+                <button type="submit">로그인</button>
+                <button type="button" onClick={() => setSignup(true)}>회원가입</button>
+              </form>
+            )}
             <img src={loginImage} alt="Login" className="login-image" onClick={handleImageClick} />
-            <button onClick={() => setIsSignUp(true)}>Sign Up</button> {/* 회원가입 버튼 */}
-          </div>
+          </>
         )}
       </div>
     </div>

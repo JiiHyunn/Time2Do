@@ -30,6 +30,7 @@
 label {
   display: block;
   margin-bottom: 10px;
+  margin-right: 12px;
 }
 
 input[type="text"],
@@ -75,3 +76,7 @@ button[type="button"]:hover {
   height: 45px;
   margin-top: 20px;
 }
+input::placeholder {
+  color: #ccc;
+}
+

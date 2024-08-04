@@ -5,6 +5,7 @@ import Modal from './Modal';
 import ToDoList from './ToDoList';
 import Timer from './Timer';
 import FrameInstance from './FrameInstance'; // FrameInstance 추가
+import KakaoLogin from './KakaoLogin'; // KakaoLogin 컴포넌트 추가
 import img1 from './img/img1.png'; 
 import img2 from './img/img2.png';
 import img3 from './img/img3.png';
@@ -109,6 +110,11 @@ const Main = () => {
     setImg2Visible(false); // overlay-container 숨기기
   };
 
+  const handleLogout = () => {
+    setUser(null);
+    setShowModal(false);
+  };
+
   return (
     <div className="main" style={{ filter: `brightness(${brightness}%)` }}>
       <div className="main-child" />
@@ -145,7 +151,7 @@ const Main = () => {
           <b className="friday">{formatTime(currentTime)}</b>
         </div>
         <div className="div5" onClick={toggleModal}>
-          <b className="login">Login</b>
+          <b className="login">{user ? user.nickname : 'Login'}</b>
         </div>
       </div>
       <div className="cool-with-you">Cool With You - New Jeans</div>
@@ -186,7 +192,8 @@ const Main = () => {
       </div>
       <audio ref={audioRef} src="your-audio-file.mp3" autoPlay loop />
       <audio ref={rainAudioRef} src={rainSound} loop /> {/* 빗소리 오디오 */}
-      <Modal show={showModal} onClose={toggleModal} onLoginSuccess={setUser} />
+      <Modal show={showModal} onClose={toggleModal} onLoginSuccess={setUser} user={user} onLogout={handleLogout} />
+      <KakaoLogin onLoginSuccess={setUser} /> {/* KakaoLogin 컴포넌트 추가 */}
     </div>
   );
 };
