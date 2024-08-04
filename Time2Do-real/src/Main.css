@@ -1,0 +1,677 @@
+.main-child {
+  position: absolute;
+  top: 24px;
+  left: 32px;
+  border-radius: 45px;
+  background-color: #f0eaea;
+  width: 77px;
+  height: 77px;
+  display: none;
+}
+.group-child {
+  position: absolute;
+  top: -2.5px;
+  left: -2.5px;
+  border-top: 5px solid #cbbfbf;
+  box-sizing: border-box;
+  width: 35px;
+  height: 5px;
+}
+.group-item {
+  position: absolute;
+  top: 8.5px;
+  left: -2.5px;
+  border-top: 5px solid #cbbfbf;
+  box-sizing: border-box;
+  width: 27px;
+  height: 5px;
+}
+.group-inner {
+  position: absolute;
+  top: 19.5px;
+  left: -2.5px;
+  border-top: 5px solid #cbbfbf;
+  box-sizing: border-box;
+  width: 35px;
+  height: 5px;
+}
+.line-parent {
+  position: absolute;
+  top: 52px;
+  left: 56px;
+  width: 30px;
+  height: 22px;
+  display: none;
+}
+.child {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0%;
+  right: 0%;
+  bottom: 0%;
+  left: 0%;
+  border-radius: 150px;
+  background-color: #f0eaea;
+}
+.item {
+  position: absolute;
+  height: 20%;
+  width: 100%;
+  top: 0%;
+  right: 0%;
+  bottom: 80%;
+  left: 0%;
+  border-radius: 3px;
+  background-color: #cbbfbf;
+}
+.inner {
+  position: absolute;
+  height: 20%;
+  width: 100%;
+  top: 80%;
+  right: 0%;
+  bottom: 0%;
+  left: 0%;
+  border-radius: 3px;
+  background-color: #cbbfbf;
+}
+.rectangle-div {
+  position: absolute;
+  height: 20%;
+  width: 73.33%;
+  top: 40%;
+  right: 26.67%;
+  bottom: 40%;
+  left: 0%;
+  border-radius: 3px;
+  background-color: #cbbfbf;
+}
+.div1 {
+  position: absolute;
+  height: 23.81%;
+  width: 28.57%;
+  top: 38.1%;
+  right: 35.71%;
+  bottom: 38.1%;
+  left: 35.71%;
+}
+.div {
+  position: absolute;
+  top: 45px;
+  left: 45px;
+  width: 105px;
+  height: 105px;
+}
+.todolist-child {
+  position: absolute;
+  height: 453.67%;
+  width: 100%;
+  top: 0%;
+  right: 0%;
+  bottom: -353.67%;
+  left: 0%;
+  border-radius: 30px;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+}
+.button-icon {
+  position: absolute;
+  height: 10.17%;
+  width: 72.22%;
+  top: 429.38%;
+  right: 13.89%;
+  bottom: -339.55%;
+  left: 13.89%;
+  max-width: 100%;
+  overflow: hidden;
+  max-height: 100%;
+  object-fit: cover;
+}
+.todolist-item {
+  position: absolute;
+  height: 8.47%;
+  width: 8.33%;
+  top: 38.98%;
+  right: 77.78%;
+  bottom: 52.54%;
+  left: 13.89%;
+  border: 3px solid #cbbfbf;
+  box-sizing: border-box;
+}
+.todolist-inner {
+  position: absolute;
+  height: 8.47%;
+  width: 8.33%;
+  top: 53.11%;
+  right: 77.78%;
+  bottom: 38.42%;
+  left: 13.89%;
+  border: 3px solid #cbbfbf;
+  box-sizing: border-box;
+}
+.div2 {
+  position: absolute;
+  top: 54.24%;
+  left: 27.78%;
+  letter-spacing: -0.05em;
+  font-weight: 500;
+}
+.goal {
+  position: absolute;
+  top: 11.3%;
+  left: 35%;
+  font-size: 20px;
+  font-family: 'Nico Moji';
+  text-align: center;
+}
+.task {
+  position: absolute;
+  top: 36.72%;
+  left: 27.78%;
+  font-size: 13px;
+  font-family: Amiri;
+}
+.todolist {
+  position: absolute;
+  top: 186px;
+  left: 1223px;
+  width: 180px;
+  height: 177px;
+  font-size: 10px;
+  font-family: KoPubBatang;
+}
+
+.span {
+  letter-spacing: 0.12em;
+}
+.friday {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  line-height: 104.6%;
+}
+.am {
+  position: absolute;
+  top: 0%;
+  left: 60%;
+  font-size: 18px;
+  line-height: 104.6%;
+}
+.div4 {
+  position: absolute;
+  height: 46.67%;
+  width: 52.22%;
+  top: 53.33%;
+  right: 42.22%;
+  bottom: 0%;
+  left: 5.56%;
+}
+.login {
+  position: absolute;
+  top: 5.26%;
+  left: 0%;
+  line-height: 86.57%;
+}
+.div5 {
+  position: absolute;
+  bottom: 15px;
+  left: 150px;
+  width: 49px;
+  height: 19px;
+  text-align: right;
+}
+.div3 {
+  position: absolute;
+  top: 35px;
+  left:  1223px;
+  width: 180px;
+  height: 45px;
+  color: #9e9797;
+  font-family: Amiri;
+}
+.cool-with-you {
+  position: absolute;
+  top: 870.5px;
+  left: 570px;
+  line-height: 104.6%;
+  color: #9e9797;
+  display: inline-block;
+  width: 329px;
+}
+.cool-with-you-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px; /* `cool-with-you`와 `SpotifyPlayer` 간의 간격 */
+  position: absolute;
+  top: 870.5px;
+  left: calc(50% - 165px);
+}
+
+.cool-with-you {
+  line-height: 104.6%;
+  color: #9e9797;
+  display: inline-block;
+  width: auto;
+}
+
+.ellipse-div {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0%;
+  right: 0%;
+  bottom: 0%;
+  left: 0%;
+  box-shadow: 0px 0px 17px 8px #f0eaea;
+  border-radius: 50%;
+  background-color: #f0eaea;
+}
+.subtract-icon {
+  position: relative;
+  border-radius: 35px;
+  width: 571px;
+  height: 570.1px;
+}
+.div7 {
+  position: absolute;
+  top: 36.04%;
+  left: 20.03%;
+}
+.div6 {
+  position: absolute;
+  top: 250.5px;
+  left: 553px;
+  width: 634px;
+  height: 634px;
+  text-align: center;
+  font-size: 120px;
+  font-family: 'DNF Bit Bit v2';
+}
+.study-session-1 {
+  position: absolute;
+  top: 0%;
+  left: 8.81%;
+  white-space: nowrap; /* 줄 바꿈 없이 한 줄로 표시 */
+}
+
+
+
+.div8 {
+  position: absolute;
+  top: 15.29%;
+  left: 91.19%;
+}
+.div9 {
+  position: absolute;
+  top: 15.29%;
+  left: 8.81%;
+  transform:  rotate(180deg);
+  transform-origin: 0 0;
+}
+.study-session {
+  position: absolute;
+  top: 821.5px;
+  left: 493px;
+  width: 454px;
+  height: 42.5px;
+  font-size: 36px;
+}
+.icon {
+  position: absolute;
+  top: 103px;
+  left: 1274px;
+  width: 128.8px;
+  height: 21.8px;
+}
+.icon1 {
+  position: absolute;
+  top: 134px;
+  left: 1274px;
+  width: 132px;
+  height: 16px;
+  object-fit: cover;
+}
+.main {
+  width: 100%;
+  position: relative;
+  background-color: #fffcfb;
+  height: 1024px;
+  overflow: hidden;
+  text-align: left;
+  font-size: 20px;
+  color: #585151;
+  font-family: 'Nico Moji';
+} 
+.icon-container {
+  position: absolute;
+  top: 103px;
+  left: 1274px;
+  width: 150px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brightness-slider {
+  width: 100%;
+}
+.icon-container {
+  position: absolute;
+  top: 103px;
+  left: 1274px;
+  width: 150px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brightness-slider {
+  width: 100%;
+}
+
+.icon1-container {
+  position: absolute;
+  top: 134px;
+  left: 1274px;
+  width: 150px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.volume-slider {
+  width: 100%;
+}
+.icon-container {
+  position: absolute;
+  top: 103px;
+  left: 1274px;
+  width: 150px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brightness-slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 8px;
+  background: #cbbfbf;
+  border-radius: 4px;
+  outline: none;
+  opacity: 0.7;
+  transition: opacity .2s;
+}
+
+.brightness-slider:hover {
+  opacity: 1;
+}
+
+.brightness-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  background: url('./img/icon-slider.png') no-repeat center;
+  background-size: contain;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.brightness-slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background: url('./img/icon-slider.png') no-repeat center;
+  background-size: contain;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.icon1-container {
+  position: absolute;
+  top: 134px;
+  left: 1274px;
+  width: 150px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.volume-slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 8px;
+  background: #cbbfbf;
+  border-radius: 4px;
+  outline: none;
+  opacity: 0.7;
+  transition: opacity .2s;
+}
+
+.volume-slider:hover {
+  opacity: 1;
+}
+
+.volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  background: url('./img/icon-slider.png') no-repeat center;
+  background-size: contain;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.volume-slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background: url('./img/icon-slider.png') no-repeat center;
+  background-size: contain;
+  cursor: pointer;
+  border-radius: 50%;
+}
+.icon-container {
+  position: absolute;
+  top: 103px;
+  left: 1274px;
+  width: 150px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brightness-slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 8px;
+  background: #cbbfbf;
+  border-radius: 4px;
+  outline: none;
+  opacity: 0.7;
+  transition: opacity .2s;
+}
+
+.brightness-slider:hover {
+  opacity: 1;
+}
+
+.brightness-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  background: url('./img/icon-slider2.png') no-repeat center;
+  background-size: contain;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.brightness-slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background: url('./img/icon-slider2.png') no-repeat center;
+  background-size: contain;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.icon1-container {
+  position: absolute;
+  top: 134px;
+  left: 1274px;
+  width: 150px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.volume-slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 8px;
+  background: #cbbfbf;
+  border-radius: 4px;
+  outline: none;
+  opacity: 0.7;
+  transition: opacity .2s;
+}
+
+.volume-slider:hover {
+  opacity: 1;
+}
+
+.volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  background: url('./img/icon-slider2.png') no-repeat center;
+  background-size: contain;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.volume-slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background: url('./img/icon-slider2.png') no-repeat center;
+  background-size: contain;
+  cursor: pointer;
+  border-radius: 50%;
+}
+/* 풀다운 메뉴 스타일 */
+.dropdown-menu {
+  display: none; /* 초기 상태에서는 숨김 */
+  position: absolute;
+  top: 50px; /* 적절한 위치로 조정 */
+  left: 45px;
+  width: 105px;
+  height: 494px;
+  background-color: #f0eaea; /* div child의 배경색과 동일하게 설정 */
+  border-radius: 45px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+/* 드롭다운 메뉴가 보일 때 */
+.dropdown-menu.show {
+  display: block;
+}
+
+.dropdown-menu img {
+  width: 37px;
+  height: 37px;
+  margin-bottom: 40px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.dropdown-menu img:first-child {
+  margin-top: 20px; /* 마지막 이미지는 추가 간격을 제거 */
+}
+.dropdown-menu img:last-child {
+  margin-bottom: 20px; /* 마지막 이미지는 추가 간격을 제거 */
+
+}
+.overlay-img {
+  position: absolute;
+  top: -250px;
+  left: -200px;
+  z-index: 2; /* overlay 이미지의 z-index 설정 */
+}
+.Timerbutton1 {
+  position: absolute;
+  top: 381px; /* TimerSetting 이미지 위에 위치하도록 조정 */
+  left: -104px; /* TimerSetting 이미지 위에 위치하도록 조정 */
+  z-index: 3;
+  width: 133px; /* 필요에 따라 크기 조정 */
+  height: 64px; /* 필요에 따라 크기 조정 */
+}
+.Timerbutton2 {
+  position: absolute;
+  top: 381px; /* TimerSetting 이미지 위에 위치하도록 조정 */
+  left: 102px; /* TimerSetting 이미지 위에 위치하도록 조정 */
+  z-index: 3;
+  width: 133px; /* 필요에 따라 크기 조정 */
+  height: 64px; /* 필요에 따라 크기 조정 */
+}
+
+.Timerbutton3 {
+  position: absolute;
+  top: 381px; /* TimerSetting 이미지 위에 위치하도록 조정 */
+  left: 305px; /* TimerSetting 이미지 위에 위치하도록 조정 */
+  z-index: 3;
+  width: 133px; /* 필요에 따라 크기 조정 */
+  height: 64px; /* 필요에 따라 크기 조정 */
+}
+.memo-image {
+  position: absolute;
+  top: calc(186px + 177px + 15px); /* ToDoList 위치 + 높이 + 40px */
+  left: 1242px;
+  width: 180px;
+}
+
+.memo-image-below-div3 {
+  position: absolute;
+  top: calc(35px + 45px + 100px); /* div3 위치 + 높이 + 40px */
+  left: 1242px;
+  width: 180px;
+}
+.memo-container {
+  position: absolute;
+  top: calc(186px + 177px + 15px); /* ToDoList 위치 + 높이 + 40px */
+  left: 1242px;
+  width: 180px;
+}
+
+.memo-container-below-div3 {
+  position: absolute;
+  top: calc(35px + 45px + 100px); /* div3 위치 + 높이 + 40px */
+  left: 1242px;
+  width: 180px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

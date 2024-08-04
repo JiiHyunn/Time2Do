@@ -1,0 +1,13 @@
+
+@font-face {
+    font-family: "DNF Bit Bit v2";
+    src: url("./font/DNFBitBitv2.ttf");
+  }
+  @font-face {
+    font-family: "Nico Moji";
+    src: url("./font/NicoMoji-Regular.ttf"); 
+  }
+body {
+  margin: 0;
+  line-height: normal;
+}
