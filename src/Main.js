@@ -4,9 +4,8 @@ import { useEffect, useState, useRef } from 'react';
 import Modal from './Modal';
 import ToDoList from './ToDoList';
 import Timer from './Timer';
-import FrameInstance from './FrameInstance'; // FrameInstance 추가
-import KakaoLogin from './KakaoLogin'; // KakaoLogin 컴포넌트 추가
-import img1 from './img/img1.png'; 
+import FrameInstance from './FrameInstance';
+import img1 from './img/img1.png';
 import img2 from './img/img2.png';
 import img3 from './img/img3.png';
 import img4 from './img/img4.png';
@@ -24,17 +23,16 @@ const Main = () => {
   const [brightness, setBrightness] = useState(100);
   const [volume, setVolume] = useState(100);
   const [dropdownVisible, setDropdownVisible] = useState(false);
-  const [img2Visible, setImg2Visible] = useState(false); 
-  const [showToDoList, setShowToDoList] = useState(false); // ToDoList 표시 상태 추가
-  const [showMemo, setShowMemo] = useState(false); // Memo 표시 상태 추가
-  const [user, setUser] = useState(null); 
-  const [timerKey, setTimerKey] = useState(Date.now()); // 타이머 리셋을 위한 키
-  const [timerTime, setTimerTime] = useState(1500); // 타이머 초기값
+  const [img2Visible, setImg2Visible] = useState(false);
+  const [showToDoList, setShowToDoList] = useState(false);
+  const [showMemo, setShowMemo] = useState(false);
+  const [user, setUser] = useState(null);
+  const [timerKey, setTimerKey] = useState(Date.now());
+  const [timerTime, setTimerTime] = useState(1500);
   const audioRef = useRef(null);
-  const rainAudioRef = useRef(null); // 빗소리 오디오 참조
+  const rainAudioRef = useRef(null);
 
   useEffect(() => {
-    // 페이지가 로드될 때 90% 줌으로 설정
     document.body.style.zoom = '90%';
 
     const timer = setInterval(() => {
@@ -49,7 +47,7 @@ const Main = () => {
     let minutes = date.getMinutes();
     let ampm = hours >= 12 ? 'P.M.' : 'A.M.';
     hours = hours % 12;
-    hours = hours ? hours : 12; 
+    hours = hours ? hours : 12;
     minutes = minutes < 10 ? '0' + minutes : minutes;
     return `${hours}:${minutes} ${ampm}`;
   };
@@ -89,11 +87,11 @@ const Main = () => {
   };
 
   const toggleToDoList = () => {
-    setShowToDoList(!showToDoList); // ToDoList 표시 여부 토글
+    setShowToDoList(!showToDoList);
   };
 
   const toggleMemo = () => {
-    setShowMemo(!showMemo); // Memo 표시 여부 토글
+    setShowMemo(!showMemo);
   };
 
   const toggleRainSound = () => {
@@ -106,8 +104,8 @@ const Main = () => {
 
   const handleTimerReset = (time) => {
     setTimerTime(time);
-    setTimerKey(Date.now()); // 타이머를 리셋하기 위해 키를 갱신
-    setImg2Visible(false); // overlay-container 숨기기
+    setTimerKey(Date.now());
+    setImg2Visible(false);
   };
 
   const handleLogout = () => {
@@ -134,17 +132,17 @@ const Main = () => {
       <div className={`dropdown-menu ${dropdownVisible ? 'show' : ''}`} onClick={toggleDropdown}>
         <img src={img1} alt="img1" />
         <img src={img2} alt="img2" onClick={toggleImg2} />
-        <img src={img3} alt="img3" onClick={toggleToDoList} /> {/* img3 클릭 시 ToDoList 토글 */}
-        <img src={img4} alt="img4" onClick={toggleMemo} /> {/* img4 클릭 시 Memo 토글 */}
-        <img src={img5} alt="img5" onClick={toggleRainSound} /> {/* img5 클릭 시 빗소리 토글 */}
+        <img src={img3} alt="img3" onClick={toggleToDoList} />
+        <img src={img4} alt="img4" onClick={toggleMemo} />
+        <img src={img5} alt="img5" onClick={toggleRainSound} />
         <img src={img7} alt="img7" onClick={() => document.documentElement.requestFullscreen()} />
       </div>
-      {showToDoList && <ToDoList />} {/* ToDoList 표시 */}
+      {showToDoList && <ToDoList />}
       {showMemo && (
         <div className={showToDoList ? 'memo-container' : 'memo-container-below-div3'}>
           <FrameInstance />
         </div>
-      )} {/* Memo 표시 */}
+      )}
       <div className="div3">
         <div className="friday">{formatDate(currentTime)}</div>
         <div className="div4">
@@ -191,9 +189,8 @@ const Main = () => {
         />
       </div>
       <audio ref={audioRef} src="your-audio-file.mp3" autoPlay loop />
-      <audio ref={rainAudioRef} src={rainSound} loop /> {/* 빗소리 오디오 */}
+      <audio ref={rainAudioRef} src={rainSound} loop />
       <Modal show={showModal} onClose={toggleModal} onLoginSuccess={setUser} user={user} onLogout={handleLogout} />
-      <KakaoLogin onLoginSuccess={setUser} /> {/* KakaoLogin 컴포넌트 추가 */}
     </div>
   );
 };

@@ -8,20 +8,29 @@ const Modal = ({ show, onClose, onLoginSuccess, user, onLogout }) => {
   const [email, setEmail] = useState('');
   const [adConsent, setAdConsent] = useState(false);
   const [signup, setSignup] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleLogin = (e) => {
     e.preventDefault();
-    console.log('Username:', username);
-    console.log('Password:', password);
-    onLoginSuccess({ nickname: username }); // 사용자 정보 설정
-    onClose(); 
+    const storedUser = JSON.parse(localStorage.getItem(username));
+    if (storedUser && storedUser.password === password) {
+      onLoginSuccess({ nickname: username }); // 사용자 정보 설정
+      setErrorMessage('');
+      onClose();
+    } else {
+      setErrorMessage('아이디 또는 비밀번호가 잘못되었습니다.');
+    }
   };
 
   const handleSignup = (e) => {
     e.preventDefault();
-    console.log('Sign up:', { username, password, email, adConsent });
-    // 회원가입 로직 추가
-    setSignup(false); // 회원가입 완료 후 로그인 화면으로 이동
+    if (localStorage.getItem(username)) {
+      setErrorMessage('이미 존재하는 아이디입니다.');
+    } else {
+      localStorage.setItem(username, JSON.stringify({ password, email, adConsent }));
+      setSignup(false); // 회원가입 완료 후 로그인 화면으로 이동
+      setErrorMessage('');
+    }
   };
 
   const handleImageClick = () => {
@@ -46,7 +55,8 @@ const Modal = ({ show, onClose, onLoginSuccess, user, onLogout }) => {
           </>
         ) : (
           <>
-            <h2>{signup ? 'Sign Up' : 'Login'}</h2>
+            <h2>{signup ? '회원가입' : '로그인'}</h2>
+            {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
             {signup ? (
               <form onSubmit={handleSignup}>
                 <label>
