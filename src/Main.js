@@ -29,6 +29,7 @@ const Main = () => {
   const [user, setUser] = useState(null);
   const [timerKey, setTimerKey] = useState(Date.now());
   const [timerTime, setTimerTime] = useState(1500);
+  const [toDoListHeight, setToDoListHeight] = useState(0);
   const audioRef = useRef(null);
   const rainAudioRef = useRef(null);
 
@@ -113,6 +114,10 @@ const Main = () => {
     setShowModal(false);
   };
 
+  const memoContainerTop = showToDoList
+    ? `calc(186px + ${toDoListHeight}px + 35px)`
+    : `calc(134px + 30px + 30px)`; // icon1-container 위치 + 35px 간격
+
   return (
     <div className="main" style={{ filter: `brightness(${brightness}%)` }}>
       <div className="main-child" />
@@ -137,9 +142,9 @@ const Main = () => {
         <img src={img5} alt="img5" onClick={toggleRainSound} />
         <img src={img7} alt="img7" onClick={() => document.documentElement.requestFullscreen()} />
       </div>
-      {showToDoList && <ToDoList />}
+      {showToDoList && <ToDoList onHeightChange={setToDoListHeight} />}
       {showMemo && (
-        <div className={showToDoList ? 'memo-container' : 'memo-container-below-div3'}>
+        <div className={showToDoList ? 'memo-container' : 'memo-container-below-div3'} style={{ top: memoContainerTop }}>
           <FrameInstance />
         </div>
       )}
@@ -190,7 +195,7 @@ const Main = () => {
       </div>
       <audio ref={audioRef} src="your-audio-file.mp3" autoPlay loop />
       <audio ref={rainAudioRef} src={rainSound} loop />
-      <Modal show={showModal} onClose={toggleModal} onLoginSuccess={setUser} user={user} onLogout={handleLogout} />
+      <Modal show={showModal} onClose={toggleModal} user={user} onLogout={handleLogout} />
     </div>
   );
 };

@@ -1,20 +1,27 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './ToDoList.css';
 import tdlImage from './img/tdl.png';
 import deleteImage from './img/Delete.png';
-import dragImage from './img/drag.png'; // 드래그 이미지 추가
+import dragImage from './img/drag.png';
 
-const ToDoList = () => {
+const ToDoList = ({ onHeightChange }) => {
   const [tasks, setTasks] = useState(() => {
     const savedTasks = localStorage.getItem('tasks');
     return savedTasks ? JSON.parse(savedTasks) : [];
   });
   const [newTask, setNewTask] = useState('');
   const [draggingIndex, setDraggingIndex] = useState(null);
+  const listRef = useRef(null);
 
   useEffect(() => {
     localStorage.setItem('tasks', JSON.stringify(tasks));
   }, [tasks]);
+
+  useEffect(() => {
+    if (listRef.current) {
+      onHeightChange(listRef.current.clientHeight);
+    }
+  }, [tasks, onHeightChange]);
 
   const handleAddTask = () => {
     if (newTask.trim()) {
@@ -55,7 +62,7 @@ const ToDoList = () => {
   };
 
   return (
-    <div className="todolist">
+    <div className="todolist" ref={listRef}>
       <h2 className="goal-title">goal</h2>
       <ul className="task-list">
         {tasks.map((task, index) => (
@@ -67,7 +74,6 @@ const ToDoList = () => {
             onDragEnter={() => handleDragEnter(index)}
             onDragEnd={handleDragEnd}
           >
-            
             <input
               type="checkbox"
               checked={task.completed}

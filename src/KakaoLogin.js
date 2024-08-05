@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
 const KakaoLogin = ({ onLoginSuccess }) => {
   const [user, setUser] = useState(null);
+  const location = useLocation();
 
   useEffect(() => {
-    const code = new URL(window.location.href).searchParams.get('code');
-    console.log('Code:', code); // code 값 로그로 확인
+    //const code = new URL(window.location.href).searchParams.get('code');
+    const params = new URLSearchParams(location.search);
+    const code = params.get('code');
     if (code) {
+      console.log('Code:', code); // code 값 로그로 확인
       fetchUserInfo(code);
     }
-  }, []);
+  }, [location.search]);
 
   const fetchUserInfo = (code) => {
     const url = new URL('http://localhost:8080/kakao/callback');
