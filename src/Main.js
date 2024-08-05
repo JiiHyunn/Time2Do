@@ -5,7 +5,7 @@ import Modal from './Modal';
 import ToDoList from './ToDoList';
 import Timer from './Timer';
 import FrameInstance from './FrameInstance';
-import CustomTimeInput from './CustomTimeInput'; // CustomTimeInput 추가
+import KakaoLogin from './KakaoLogin';
 import img1 from './img/img1.png';
 import img2 from './img/img2.png';
 import img3 from './img/img3.png';
@@ -13,10 +13,13 @@ import img4 from './img/img4.png';
 import img5 from './img/img5.png';
 import img7 from './img/img7.png';
 import TimerSetting from './img/TimerSetting.png';
+import CustomTimeInput from './CustomTimeInput'; // CustomTimeInput 추가
 import Timerbutton from './img/Timerbutton.png';
 import Timerbutton2 from './img/Timerbutton2.png';
 import Timerbutton3 from './img/Timerbutton3.png';
 import rainSound from './music/내가 들으려고 만든 잠드는 빗소리 1시간버전 1분후 검은화면.mp3';
+import lightImg from './img/light.png'; // 추가
+import soundImg from './img/sound.png'; // 추가
 
 const Main = () => {
   const [currentTime, setCurrentTime] = useState(new Date());
@@ -155,19 +158,25 @@ const Main = () => {
           <b className="friday">{formatTime(currentTime)}</b>
         </div>
         <div className="div5" onClick={toggleModal}>
-          <b className="login">{user ? user.nickname : 'Login'}</b>
-          {user && <img src={user.profileImageUrl} alt="Profile" style={{ width: '20px', height: '20px', borderRadius: '50%', marginLeft: '10px' }} />}
+          {user ? (
+            <div>
+              <img src={user.profileImage} alt="Profile" className="profile-image" />
+              <span>{user.nickname}</span>
+            </div>
+          ) : (
+            <b className="login">Login</b>
+          )}
         </div>
       </div>
       <div className="cool-with-you">Cool With You - New Jeans</div>
       <div className="div6">
         {img2Visible ? (
           <div className="overlay-container">
-            <img src={TimerSetting} alt="img2-overlay" className="overlay-img" />
-            <CustomTimeInput onTimeSubmit={handleTimerReset} defaultTime={25} label="form1" />
-            <CustomTimeInput onTimeSubmit={handleTimerReset} defaultTime={10} label="form2" />
-            <CustomTimeInput onTimeSubmit={handleTimerReset} defaultTime={20} label="form3" />
-          </div>
+          <img src={TimerSetting} alt="img2-overlay" className="overlay-img" />
+          <CustomTimeInput onTimeSubmit={handleTimerReset} defaultTime={25} label="form1" />
+          <CustomTimeInput onTimeSubmit={handleTimerReset} defaultTime={10} label="form2" />
+          <CustomTimeInput onTimeSubmit={handleTimerReset} defaultTime={20} label="form3" />
+        </div>
         ) : (
           <Timer key={timerKey} initialTime={timerTime} />
         )}
@@ -184,6 +193,7 @@ const Main = () => {
           onChange={handleBrightnessChange}
           className="brightness-slider"
         />
+        <img src={lightImg} alt="Light" className="icon-light" /> {/* 추가된 부분 */}
       </div>
       <div className="icon1-container">
         <input
@@ -194,10 +204,12 @@ const Main = () => {
           onChange={handleVolumeChange}
           className="volume-slider"
         />
+        <img src={soundImg} alt="Sound" className="icon-sound" /> {/* 추가된 부분 */}
       </div>
       <audio ref={audioRef} src="your-audio-file.mp3" autoPlay loop />
       <audio ref={rainAudioRef} src={rainSound} loop />
       <Modal show={showModal} onClose={toggleModal} user={user} onLogout={handleLogout} />
+      <KakaoLogin onLoginSuccess={setUser} />
     </div>
   );
 };

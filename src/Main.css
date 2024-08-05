@@ -680,6 +680,43 @@
   border: 1px solid #ccc;
   border-radius: 4px;
 }
+.icon-container {
+  position: absolute;
+  top: 103px;
+  left: 1274px;
+  width: 180px; /* 넓이 증가 */
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brightness-slider {
+  width: 100%;
+}
+
+.icon-light {
+  margin-left: 10px; /* 이미지와 슬라이더 사이의 간격 조정 */
+}
+
+.icon1-container {
+  position: absolute;
+  top: 134px;
+  left: 1274px;
+  width: 180px; /* 넓이 증가 */
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.volume-slider {
+  width: 100%;
+}
+
+.icon-sound {
+  margin-left: 10px; /* 이미지와 슬라이더 사이의 간격 조정 */
+}
 
 
 

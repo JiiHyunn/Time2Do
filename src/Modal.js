@@ -4,7 +4,7 @@ import loginImage from './img/loginImage.png';
 
 const Modal = ({ show, onClose, user, onLogout }) => {
   const handleImageClick = () => {
-    window.location.href = 'https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=9dac5fed462a679bb95d052f9fc5a549&redirect_uri=http://localhost:3000/kakao/callback';
+    window.location.href = 'https://kauth.kakao.com/oauth/authorize?response_type=code&client_id=9dac5fed462a679bb95d052f9fc5a549&redirect_uri=https://jiihyunn.github.io/Time2Do/';
   };
 
   if (!show) {

@@ -47,14 +47,14 @@ const KakaoLogin = ({ onLoginSuccess }) => {
       window.Kakao.init('6c5a26c3f4532c47409caacef2f1b67b');
     }
     window.Kakao.Auth.authorize({
-      redirectUri: 'http://localhost:3000/kakao/callback',
+      redirectUri: 'https://jiihyunn.github.io/Time2Do/',
     });
   };
 
   return (
     <div>
       {user && <div className="user-info">{user.nickname}님 환영합니다!</div>}
-      <button onClick={handleLogin}>Kakao Login</button>
+      
     </div>
   );
 };
