@@ -1,0 +1,49 @@
+.custom-time-form {
+    position: absolute;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Nico Moji', sans-serif; /* Nico Moji 폰트 추가 */
+    text-align: center; /* 가운데 정렬 */
+  }
+  
+  .custom-time-input {
+    width: 70px;
+    padding: 8px;
+    margin-bottom: 8px;
+    border: none;
+    font-size: 20px;
+    text-align: center; /* 가운데 정렬 */
+    font-family: 'Nico Moji', sans-serif; /* Nico Moji 폰트 추가 */
+  }
+  
+  .custom-time-form button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    font-family: 'Nico Moji', sans-serif; /* Nico Moji 폰트 추가 */
+  }
+  
+  .custom-time-form button:hover {
+    background-color: #45a049;
+  }
+  
+  .custom-time-form.form1 {
+    top: 396px; /* Form1의 위치 */
+    left: -75px; /* Form1의 위치 */
+  }
+  
+  .custom-time-form.form2 {
+    top: 396px; /* Form2의 위치 */
+    left: 130px; /* Form2의 위치 */
+  }
+  
+  .custom-time-form.form3 {
+    top: 396px; /* Form3의 위치 */
+    left: 335px; /* Form3의 위치 */
+  }
+  

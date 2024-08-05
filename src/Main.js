@@ -5,6 +5,7 @@ import Modal from './Modal';
 import ToDoList from './ToDoList';
 import Timer from './Timer';
 import FrameInstance from './FrameInstance';
+import CustomTimeInput from './CustomTimeInput'; // CustomTimeInput 추가
 import img1 from './img/img1.png';
 import img2 from './img/img2.png';
 import img3 from './img/img3.png';
@@ -155,6 +156,7 @@ const Main = () => {
         </div>
         <div className="div5" onClick={toggleModal}>
           <b className="login">{user ? user.nickname : 'Login'}</b>
+          {user && <img src={user.profileImageUrl} alt="Profile" style={{ width: '20px', height: '20px', borderRadius: '50%', marginLeft: '10px' }} />}
         </div>
       </div>
       <div className="cool-with-you">Cool With You - New Jeans</div>
@@ -162,9 +164,9 @@ const Main = () => {
         {img2Visible ? (
           <div className="overlay-container">
             <img src={TimerSetting} alt="img2-overlay" className="overlay-img" />
-            <img src={Timerbutton} alt="Timerbutton" className="Timerbutton1" onClick={() => handleTimerReset(1500)} />
-            <img src={Timerbutton2} alt="Timerbutton2" className="Timerbutton2" onClick={() => handleTimerReset(300)} />
-            <img src={Timerbutton3} alt="Timerbutton3" className="Timerbutton3" onClick={() => handleTimerReset(1200)} />
+            <CustomTimeInput onTimeSubmit={handleTimerReset} defaultTime={25} label="form1" />
+            <CustomTimeInput onTimeSubmit={handleTimerReset} defaultTime={10} label="form2" />
+            <CustomTimeInput onTimeSubmit={handleTimerReset} defaultTime={20} label="form3" />
           </div>
         ) : (
           <Timer key={timerKey} initialTime={timerTime} />

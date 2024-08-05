@@ -44,7 +44,7 @@ const KakaoLogin = ({ onLoginSuccess }) => {
 
   const handleLogin = () => {
     if (!window.Kakao.isInitialized()) {
-      window.Kakao.init('c0ff6382916f06efdc1b686fc70d74af');
+      window.Kakao.init('6c5a26c3f4532c47409caacef2f1b67b');
     }
     window.Kakao.Auth.authorize({
       redirectUri: 'http://localhost:3000/kakao/callback',
