@@ -1,17 +1,18 @@
 {
   "files": {
-    "main.css": "/Time2Do/static/css/main.86f75156.css",
-    "main.js": "/Time2Do/static/js/main.d9499527.js",
+    "main.css": "/Time2Do/static/css/main.3f522390.css",
+    "main.js": "/Time2Do/static/js/main.40080fd3.js",
     "static/media/내가 들으려고 만든 잠드는 빗소리 1시간버전 1분후 검은화면.mp3": "/Time2Do/static/media/내가 들으려고 만든 잠드는 빗소리 1시간버전 1분후 검은화면.bf2c947b76c5ee1ac02d.mp3",
+    "static/media/KoPubWorld Batang Medium.ttf": "/Time2Do/static/media/KoPubWorld Batang Medium.0282e6e15da8a98240ee.ttf",
     "static/media/DNFBitBitv2.ttf": "/Time2Do/static/media/DNFBitBitv2.e56226a917a247c718e6.ttf",
     "static/media/NicoMoji-Regular.ttf": "/Time2Do/static/media/NicoMoji-Regular.3004d447f30aae5c592d.ttf",
     "static/media/TimerSetting.png": "/Time2Do/static/media/TimerSetting.d02af05c7ed8480f4fae.png",
     "index.html": "/Time2Do/index.html",
-    "main.86f75156.css.map": "/Time2Do/static/css/main.86f75156.css.map",
-    "main.d9499527.js.map": "/Time2Do/static/js/main.d9499527.js.map"
+    "main.3f522390.css.map": "/Time2Do/static/css/main.3f522390.css.map",
+    "main.40080fd3.js.map": "/Time2Do/static/js/main.40080fd3.js.map"
   },
   "entrypoints": [
-    "static/css/main.86f75156.css",
-    "static/js/main.d9499527.js"
+    "static/css/main.3f522390.css",
+    "static/js/main.40080fd3.js"
   ]
 }
