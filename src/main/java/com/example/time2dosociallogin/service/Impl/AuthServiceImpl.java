@@ -40,7 +40,6 @@ public class AuthServiceImpl implements AuthService {
     @Value("${kakao.userinfo.url}")
     private String kakaoUserInfoUrl;
 
-
     @Override
     @Transactional
     public ResponseEntity<?> getKaKaoUserInfo(String code) {
@@ -99,9 +98,9 @@ public class AuthServiceImpl implements AuthService {
 //            return kakaoTokenDto;
 
         }catch (HttpClientErrorException e) {
-                log.error("Error during Kakao login process: {}", e.getStatusCode());
-                log.error("Response body: {}", e.getResponseBodyAsString());
-                log.error("Response headers: {}", e.getResponseHeaders());
+//                log.error("Error during Kakao login process: {}", e.getStatusCode());
+//                log.error("Response body: {}", e.getResponseBodyAsString());
+//                log.error("Response headers: {}", e.getResponseHeaders());
                 return new ResponseEntity<>(e.getResponseBodyAsString(), e.getStatusCode());
 
         } catch (Exception e) {
@@ -136,7 +135,8 @@ public class AuthServiceImpl implements AuthService {
             Map<String, Object> profile = (Map<String, Object>) kakaoAccount.get("profile");
 
             ResponseDto responseSignUpDto = ResponseDto.builder()
-                    .userName((String) kakaoAccount.get("name"))
+                    //.userName((String) kakaoAccount.get("name"))
+                    .userNickName((String) profile.get("nickname"))
                     .email((String) kakaoAccount.get("email"))
                     .profileUrl((String) profile.get("profile_image_url"))
                     .build();
@@ -147,16 +147,18 @@ public class AuthServiceImpl implements AuthService {
             Users users;
             if (existingUser == null) {
                 // 신규 사용자 생성
-                users = new Users();
-                users.setName(responseSignUpDto.getUserName());
-                users.setEmail(responseSignUpDto.getEmail());
-                users.setProfile_image_url(responseSignUpDto.getProfileUrl());
+                users = Users.builder()
+                        .nickname(responseSignUpDto.getUserNickName())
+                        .email(responseSignUpDto.getEmail())
+                        .profileImageUrl(responseSignUpDto.getProfileUrl())
+                        .roles(Collections.singletonList("ROLE_USER"))
+                        .build();
                 userRepository.save(users);
             } else {
                 // 기존 사용자 정보 업데이트
                 users = existingUser;
-                users.setName(responseSignUpDto.getUserName());
-                users.setProfile_image_url(responseSignUpDto.getProfileUrl());
+                users.setNickname(responseSignUpDto.getUserNickName());
+                users.setProfileImageUrl(responseSignUpDto.getProfileUrl());
                 userRepository.save(users);
             }
 
@@ -173,7 +175,6 @@ public class AuthServiceImpl implements AuthService {
             log.error("General error occurred: " + e.getMessage());
             throw new RuntimeException("An error occurred while processing the user info", e);
         }
-
 
     }
 }

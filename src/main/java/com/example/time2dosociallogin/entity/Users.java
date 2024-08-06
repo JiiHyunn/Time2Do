@@ -19,32 +19,32 @@ import java.util.stream.Collectors;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table
+@Table(name = "users")
 @Builder
 public class Users implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
-    private String name;
+    @Column(nullable = true)
+    private String nickname;
 
     @Column(nullable = false, unique = true)
     private String email;
 
-    @Column
+    @Column(name = "profile_image_url")
     @JsonIgnore
-    private String profile_image_url;
+    private String profileImageUrl;
 
     //role 추가
     @ElementCollection(fetch = FetchType.EAGER)
     @Builder.Default
-    private List<String> role = new ArrayList<>();
+    private List<String> roles = new ArrayList<>();
 
     //인터페이스 구현
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities(){
-        return this.role.stream()
+        return this.roles.stream()
                 .map(SimpleGrantedAuthority::new)
                 .collect(Collectors.toList());
     }

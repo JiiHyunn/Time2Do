@@ -9,7 +9,7 @@ import lombok.*;
 @ToString
 @Builder
 public class ResponseDto {
-    private String userName;
+    private String userNickName;
     private String email;
     private String profileUrl;
     private String token;
