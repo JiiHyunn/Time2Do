@@ -3,7 +3,7 @@
   width: 180px;
   height: auto;
   font-size: 10px;
-  font-family: 'KoPubBatang', sans-serif;
+  font-family: 'KoPubWorld', sans-serif;
   background: #fff;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -115,6 +115,7 @@
   justify-content: space-between;
   margin-bottom: 4px;
   border: 1px solid transparent;
+  font-family: 'KoPubWorld', sans-serif; /* KoPubWorld 폰트 추가 */
 }
 
 .todolist .task-item.dragging {

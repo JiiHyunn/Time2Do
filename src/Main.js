@@ -208,7 +208,7 @@ const Main = () => {
       </div>
       <audio ref={audioRef} src="your-audio-file.mp3" autoPlay loop />
       <audio ref={rainAudioRef} src={rainSound} loop />
-      <Modal show={showModal} onClose={toggleModal} user={user} onLogout={handleLogout} />
+      <Modal show={showModal} onClose={toggleModal} user={user} onLogout={handleLogout} onLoginSuccess={setUser} />
       <KakaoLogin onLoginSuccess={setUser} />
     </div>
   );

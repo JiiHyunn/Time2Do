@@ -27,7 +27,6 @@ const FrameInstance = () => {
       <textarea
         ref={textAreaRef}
         className="if-you-enter"
-        placeholder="If you enter more text, the box will expand. Please try."
         value={text}
         onChange={handleChange}
       />

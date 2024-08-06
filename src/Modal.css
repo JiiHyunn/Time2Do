@@ -76,7 +76,7 @@ button[type="button"]:hover {
   height: 45px;
   margin-top: 20px;
 }
+
 input::placeholder {
   color: #ccc;
 }
-

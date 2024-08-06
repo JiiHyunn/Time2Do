@@ -7,6 +7,10 @@
     font-family: "Nico Moji";
     src: url("./font/NicoMoji-Regular.ttf"); 
   }
+  @font-face {
+    font-family: "KoPubWorld";
+    src: url("./font/KoPubWorld Batang Medium.ttf"); 
+  }
 body {
   margin: 0;
   line-height: normal;
