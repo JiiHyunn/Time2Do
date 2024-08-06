@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Timer.css';
 
-const Timer = ({ initialTime }) => {
+const Timer = ({ initialTime, onCycleComplete }) => {
   const [time, setTime] = useState(initialTime || 1500); // 기본값 25분
   const [isActive, setIsActive] = useState(false);
 
@@ -18,9 +18,10 @@ const Timer = ({ initialTime }) => {
     } else if (time === 0) {
       setIsActive(false);
       clearInterval(interval);
+      onCycleComplete();
     }
     return () => clearInterval(interval);
-  }, [isActive, time]);
+  }, [isActive, time, onCycleComplete]);
 
   const toggleTimer = () => {
     setIsActive(!isActive);
@@ -33,7 +34,7 @@ const Timer = ({ initialTime }) => {
   };
 
   const calculateProgress = () => {
-    const totalTime = 1500; // 25 minutes in seconds
+    const totalTime = initialTime; // 전체 시간은 초기 시간에 따라 달라짐
     const progress = (time / totalTime) * 100;
     return progress;
   };
@@ -61,7 +62,7 @@ const Timer = ({ initialTime }) => {
             cx="150"
             cy="150"
             strokeDasharray="880"
-            strokeDashoffset={(880 * (1500 - time)) / 1500}
+            strokeDashoffset={(880 * (initialTime - time)) / initialTime}
             strokeLinecap="round"
           />
         </svg>
