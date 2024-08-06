@@ -40,14 +40,14 @@ public class SignServiceImpl implements SignService {
         if (role.equalsIgnoreCase("admin")) {
             users = Users.builder()
                     .email(signUpDto.getEmail())
-                    .name(signUpDto.getName())
-                    .role(Collections.singletonList("ROLE_ADMIN"))
+                    .nickname(signUpDto.getName())
+                    .roles(Collections.singletonList("ROLE_ADMIN"))
                     .build();
         } else {
             users = Users.builder()
                     .email(signUpDto.getEmail())
-                    .name(signUpDto.getName())
-                    .role(Collections.singletonList("ROLE_USER"))
+                    .nickname(signUpDto.getName())
+                    .roles(Collections.singletonList("ROLE_USER"))
                     .build();
         }
 
@@ -77,7 +77,7 @@ public class SignServiceImpl implements SignService {
 
         logger.info("[getSignInResult] SignInResultDto 객체 생성");
         SignInResultDto signInResultDto = SignInResultDto.builder()
-                .token(jwtProvider.createToken(String.valueOf(users.getEmail()), users.getRole()))
+                .token(jwtProvider.createToken(String.valueOf(users.getEmail()), users.getRoles()))
                 .build();
         logger.info("[getSingInResult] SignInResultDto 객체에 값 주입");
         setSuccess(signInResultDto);

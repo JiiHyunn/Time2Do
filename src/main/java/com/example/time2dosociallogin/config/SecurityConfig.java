@@ -31,7 +31,8 @@ public class SecurityConfig {
 
     @Bean
     protected SecurityFilterChain configure(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity.httpBasic().disable() // REST API는 UI를 사용하지 않으므로 기본 설정을 비활성화
+        httpSecurity
+                .httpBasic().disable() // REST API는 UI를 사용하지 않으므로 기본 설정을 비활성화
                 .csrf().disable() // REST API는 CSRF 보안이 필요 없으므로 비활성화
                 .cors().and() // CORS 설정 추가
                 .sessionManagement()
@@ -43,17 +44,15 @@ public class SecurityConfig {
                 .antMatchers("**exception**").permitAll()
                 .anyRequest().hasRole("ADMIN") // 나머지 요청은 인증된 ADMIN만 접근 가능
                 .and()
-                .exceptionHandling().accessDeniedHandler(new CustomAccessDeniedHandler())
-                .and()
-                .exceptionHandling().authenticationEntryPoint(new CustomAuthenticationEntryPoint())
-                .and()
-                .logout()
+                .exceptionHandling()
+                .accessDeniedHandler(new CustomAccessDeniedHandler())
+                .authenticationEntryPoint(new CustomAuthenticationEntryPoint())
                 .and()
                 .addFilterBefore(new JwtAuthenticationFilter(jwtTokenProvider), UsernamePasswordAuthenticationFilter.class); // JWT Token 필터를 id/password 인증 필터 이전에 추가
 
-        
         return httpSecurity.build();
     }
+
 
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {

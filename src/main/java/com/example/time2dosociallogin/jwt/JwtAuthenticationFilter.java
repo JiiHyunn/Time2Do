@@ -29,12 +29,19 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         String token = jwtTokenProvider.resolveToken(request);
         logger.info("[doFilterInternal] token 값 추출 완료. token : {}", token);
 
-        logger.info("[doFilterInternal] token 값 유효성 체크 시작");
-        if(token!=null&& jwtTokenProvider.validationToken(token)){
+        if (token != null && jwtTokenProvider.validationToken(token)) {
+            logger.info("[doFilterInternal] token 값 유효성 체크 시작");
             Authentication authentication = jwtTokenProvider.getAuthentication(token);
             SecurityContextHolder.getContext().setAuthentication(authentication);
             logger.info("[doFilterInternal] token 값 유효성 체크 완료");
         }
+
+//        logger.info("[doFilterInternal] token 값 유효성 체크 시작");
+//        if(token!=null&& jwtTokenProvider.validationToken(token)){
+//            Authentication authentication = jwtTokenProvider.getAuthentication(token);
+//            SecurityContextHolder.getContext().setAuthentication(authentication);
+//            logger.info("[doFilterInternal] token 값 유효성 체크 완료");
+//        }
         filterChain.doFilter(request,response);
 
     }
