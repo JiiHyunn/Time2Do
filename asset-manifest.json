@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/Time2Do/static/css/main.20079d5c.css",
-    "main.js": "/Time2Do/static/js/main.267fbef6.js",
-    "static/media/내가 들으려고 만든 잠드는 빗소리 1시간버전 1분후 검은화면.mp3": "/Time2Do/static/media/내가 들으려고 만든 잠드는 빗소리 1시간버전 1분후 검은화면.bf2c947b76c5ee1ac02d.mp3",
-    "static/media/KoPubWorld Batang Medium.ttf": "/Time2Do/static/media/KoPubWorld Batang Medium.0282e6e15da8a98240ee.ttf",
-    "static/media/DNFBitBitv2.ttf": "/Time2Do/static/media/DNFBitBitv2.e56226a917a247c718e6.ttf",
-    "static/media/NicoMoji-Regular.ttf": "/Time2Do/static/media/NicoMoji-Regular.3004d447f30aae5c592d.ttf",
-    "static/media/TimerSetting.png": "/Time2Do/static/media/TimerSetting.d02af05c7ed8480f4fae.png",
-    "index.html": "/Time2Do/index.html",
-    "main.20079d5c.css.map": "/Time2Do/static/css/main.20079d5c.css.map",
-    "main.267fbef6.js.map": "/Time2Do/static/js/main.267fbef6.js.map"
+    "main.css": "/static/css/main.ff101506.css",
+    "main.js": "/static/js/main.28a1e3bf.js",
+    "static/media/내가 들으려고 만든 잠드는 빗소리 1시간버전 1분후 검은화면.mp3": "/static/media/내가 들으려고 만든 잠드는 빗소리 1시간버전 1분후 검은화면.bf2c947b76c5ee1ac02d.mp3",
+    "static/media/KoPubWorld Batang Medium.ttf": "/static/media/KoPubWorld Batang Medium.0282e6e15da8a98240ee.ttf",
+    "static/media/DNFBitBitv2.ttf": "/static/media/DNFBitBitv2.e56226a917a247c718e6.ttf",
+    "static/media/NicoMoji-Regular.ttf": "/static/media/NicoMoji-Regular.3004d447f30aae5c592d.ttf",
+    "static/media/TimerSetting.png": "/static/media/TimerSetting.d02af05c7ed8480f4fae.png",
+    "index.html": "/index.html",
+    "main.ff101506.css.map": "/static/css/main.ff101506.css.map",
+    "main.28a1e3bf.js.map": "/static/js/main.28a1e3bf.js.map"
   },
   "entrypoints": [
-    "static/css/main.20079d5c.css",
-    "static/js/main.267fbef6.js"
+    "static/css/main.ff101506.css",
+    "static/js/main.28a1e3bf.js"
   ]
 }
