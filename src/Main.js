@@ -34,9 +34,6 @@ const Main = () => {
   const [timerKey, setTimerKey] = useState(Date.now());
   const [timerTime, setTimerTime] = useState(1500);
   const [toDoListHeight, setToDoListHeight] = useState(0);
-  const [studySession, setStudySession] = useState(1);
-  const [customTimes, setCustomTimes] = useState([25 * 60, 5 * 60, 15 * 60]); // 기본값: 25분, 5분, 15분
-  const [currentPhase, setCurrentPhase] = useState(0); // 현재 타이머의 단계
   const audioRef = useRef(null);
   const rainAudioRef = useRef(null);
 
@@ -116,33 +113,10 @@ const Main = () => {
     setImg2Visible(false);
   };
 
-  const handleCycleComplete = () => {
-    setCurrentPhase((prevPhase) => {
-      const nextPhase = (prevPhase + 1) % customTimes.length;
-      if (nextPhase === 0) {
-        setStudySession((prevSession) => prevSession + 1);
-      }
-      return nextPhase;
-    });
-  };
-
-  const handleCustomTimeSubmit = (index, time) => {
-    const newCustomTimes = [...customTimes];
-    newCustomTimes[index] = time;
-    setCustomTimes(newCustomTimes);
-    if (index === 0) {
-      handleTimerReset(time);
-    }
-  };
-
   const handleLogout = () => {
     setUser(null);
     setShowModal(false);
   };
-
-  useEffect(() => {
-    handleTimerReset(customTimes[currentPhase]);
-  }, [currentPhase, customTimes]);
 
   const memoContainerTop = showToDoList
     ? `calc(186px + ${toDoListHeight}px + 35px)`
@@ -199,16 +173,16 @@ const Main = () => {
         {img2Visible ? (
           <div className="overlay-container">
           <img src={TimerSetting} alt="img2-overlay" className="overlay-img" />
-          <CustomTimeInput onTimeSubmit={(time) => handleCustomTimeSubmit(0, time)} defaultTime={customTimes[0] / 60} label="form1" />
-          <CustomTimeInput onTimeSubmit={(time) => handleCustomTimeSubmit(1, time)} defaultTime={customTimes[1] / 60} label="form2" />
-          <CustomTimeInput onTimeSubmit={(time) => handleCustomTimeSubmit(2, time)} defaultTime={customTimes[2] / 60} label="form3" />
+          <CustomTimeInput onTimeSubmit={handleTimerReset} defaultTime={25} label="form1" />
+          <CustomTimeInput onTimeSubmit={handleTimerReset} defaultTime={5} label="form2" />
+          <CustomTimeInput onTimeSubmit={handleTimerReset} defaultTime={20} label="form3" />
         </div>
         ) : (
-          <Timer key={timerKey} initialTime={timerTime} onCycleComplete={handleCycleComplete} />
+          <Timer key={timerKey} initialTime={timerTime} />
         )}
       </div>
       <div className="study-session">
-        <div className="study-session-1">&lt;study session {studySession}&gt;</div>
+        <div className="study-session-1">&lt;study session 1&gt;</div>
       </div>
       <div className="icon-container">
         <input
